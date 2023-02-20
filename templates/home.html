@@ -1,0 +1,23 @@
+<!-- templates/home.html -->
+<!-- The  block template tag defines a part of the document that a child template can override.
+ To enable this, you must declare that your child template extends the parent template and define
+  a block element with the same name.-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'index' %}">Recipes</a></p>
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+  <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+  <br>
+  <br>
+  <a href="{% url 'signup' %}">Create a New Account</a>
+{% endif %}
+{% endblock %}+
+

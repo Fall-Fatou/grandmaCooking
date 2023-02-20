@@ -1,0 +1,25 @@
+<!-- recipes/templates/recipes/recipe_list.html
+Access to the fields of the Recipe model and show the list of recipes with their name and pub_date.
+-->
+{% extends "recipes/index.html" %}
+
+{% block content %}
+    <article>
+    <!--link to create a new recipe and the current date and time-->
+        <a href="{% url 'recipe-create' %}"><button>Add new recipe</button></a>
+        <h3 class="mark"><em>{% now "Y-m-d H:i" %}</em></h3>
+    </article>
+    {% for recipe in recipe_list %}
+        <article>
+        <!--referencing the name of recipes in order to give every weekday a unique color-->
+            <h2>
+                <a href="{% url 'recipe-detail' recipe.id %}">
+                    {{ recipe.name }}
+                </a>
+            </h2>
+        <h3 class="{{ recipe.date_created|date:'l' }}">
+                {{ recipe.date_created|date:'Y-m-d H:i' }}
+            </h3>
+        </article>
+    {% endfor %}
+{% endblock %}

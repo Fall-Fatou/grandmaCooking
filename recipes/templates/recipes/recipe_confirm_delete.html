@@ -1,0 +1,19 @@
+<!-- recipes/templates/recipes/recipe_list.html-->
+<!--This template will show up
+ when you are about to delete a recipe. Mentioning recipe.title
+ and recipe.created_date in the form
+ reminds you which recipe you would
+  delete by pressing Confirm.-->
+{% extends "recipes/index.html" %}
+{% block content %}
+    <form method="post">{% csrf_token %}
+        <p>
+            Are you sure you want to delete <em>"{{ recipe.name }}"</em><br>
+            created on {{ recipe.date_created|date:'Y-m-d' }}?
+        </p>
+        <input type="submit" value="Confirm">
+    </form>
+    <a href="{% url 'recipe-detail' recipe.id %}">
+        <button>Cancel</button>
+    </a>
+{% endblock %}

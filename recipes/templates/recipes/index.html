@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grandmas'Cooking</title>
+    <link rel="stylesheet" href="{% static 'css/recipe.css' %}">
+</head>
+
+<body>
+    <h1>Try one of our recipes or add a new one…</h1>
+
+    {% if messages %}
+	    <ul class="messages">
+	    {% for message in messages %}
+	        <li class="message">
+	            {{ message }}
+	        </li>
+	    {% endfor %}
+	    </ul>
+	{% endif %}
+
+    {% block content %}{% endblock %}
+
+    <hr>
+</body>
+
+</html>

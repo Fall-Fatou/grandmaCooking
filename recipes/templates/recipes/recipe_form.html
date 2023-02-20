@@ -1,0 +1,30 @@
+<!--recipes/templates/recipes/recipe_form.html-->
+<!--When this template is loaded by CreateView,
+ the form will be empty, and canceling it will
+ bring you to the list of recipes again. When
+ loaded by CreateUpdateView, it will be prefilled
+  with the current title and content of the recipe
+   Canceling will bring you to the recipe detail
+   page.-->
+{% extends "recipes/index.html" %}
+{% block content %}
+
+    <!--With form.as_p, Django
+     will display the fields defined in the
+     view wrapped in paragraphs. The csrf_token
+      template tag is a security measure to
+        prevent cross-site request forgery.-->
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+    {% if recipe %}
+        <a href="{% url 'recipe-detail' recipe.id %}">
+        	<button>Cancel</button>
+        </a>
+    {% else %}
+        <a href="{% url 'recipe-list' %}">
+        	<button>Cancel</button>
+        </a>
+    {% endif %}
+{% endblock %}

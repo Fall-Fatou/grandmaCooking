@@ -1,0 +1,56 @@
+<!--making the homepage look nice-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grandma's Cooking</title>
+    <meta name="description" content="Multiple recipes of cooking">
+
+	<!-- Preload large image -->
+    <link rel="preload" href="{% static '../static/img/video.mp4' %}" as="image">
+	<!-- Stylesheets -->
+    <link rel="stylesheet" href="https://lunevedy.com/assets/2.0/css/lunevedy.min.css" />
+    <link rel="stylesheet" href="{% static '../static/css/style.css' %}">
+
+	<!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 icons. Delete if not using. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+
+<body>
+    <header class="theme-dark hero-bg text-center-desktop text-center-mobile desktop-min-height-80vh">
+
+        <div class="container-text reveal-fade-in-header">
+            <h1 class="text-shadow">Grandma's Cooking</h1>
+            <h2 class="text-shadow">Discover over a million easy recipes with photos to find the kitchen recipe you could change to suit your tastes!
+                Better yet, create it yourself!</h2>
+        </div>
+
+        <div class="container-btn reveal-fade-in-header">
+            <a href="{% url 'login' %}" class="btn btn-solid btn-soft"><i class="fa-solid fa-right-to-bracket"></i><span>Log In</span></a>
+            <a href="{% url 'signup' %}" class="btn btn-soft btn-outline"><i class="fas fa-arrow-right"></i><span>Sign Up</span></a>
+        </div>
+
+
+        <div class="hero-bg-media">
+            <video loop playsinline muted autoplay poster="../static/img/video.jpg" class="background-video" disablepictureinpicture preload="auto">
+            <source src="../static/img/video.mp4" type="video/mp4">
+            </video>
+          </div>
+
+        <div class="bg-overlay"></div>
+
+    </header>
+    <script src="https://lunevedy.com/assets/js/lunevedy.js"></script>
+</body>
+</html>

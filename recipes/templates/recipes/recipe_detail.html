@@ -1,0 +1,18 @@
+<!--recipes/templates/recipes/recipe_detail
+show the content when you visit the detail page of an entry.-->
+{% extends "recipes/index.html" %}
+
+{% block content %}
+    <article>
+        <h2>{{ recipe.name }}</h2>
+        <h3>{{ recipe.date_created|date:'Y-m-d H:i' }}</h3>
+        <p>{{ recipe.comments }}</p>
+        <p>{{ recipe.ingredients }}</p>
+        <p>{{ recipe.preparation }}</p>
+    </article>
+
+	<p>
+	    <a href="{% url 'recipe-update' recipe.id %}">✍️ Edit</a>
+	    <a href="{% url 'recipe-delete' recipe.id %}">⛔ Delete</a>
+	</p>
+{% endblock %}
